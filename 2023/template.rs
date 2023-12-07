@@ -1,5 +1,3 @@
-const EXAMPLE_SOLUTION: &str = "42";
-
 fn main() {
     let input = include_str!("input.txt");
     println!("{}", part1(input));
@@ -8,12 +6,14 @@ fn main() {
 fn part1(input: &str) -> String {
     let lines: Vec<&str> = input.lines().collect();
 
-    "42".to_string()
+    todo!()
 }
 
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    const EXAMPLE_SOLUTION: &str = "42";
 
     #[test]
     fn example1() {

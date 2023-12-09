@@ -11,7 +11,6 @@ struct LineData {
     is_possible: bool,
 }
 
-const EXAMPLE_SOLUTION: &str = "8";
 const CUBES: Cubes = Cubes {
     red: 12,
     green: 13,
@@ -85,6 +84,8 @@ fn part1(input: &str) -> String {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    const EXAMPLE_SOLUTION: &str = "8";
 
     #[test]
     fn example() {

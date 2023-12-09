@@ -5,8 +5,6 @@ struct Cubes {
     blue: u32,
 }
 
-const EXAMPLE_SOLUTION: &str = "2286";
-
 fn main() {
     let input = include_str!("input.txt");
     println!("{}", part2(input));
@@ -70,6 +68,8 @@ fn part2(input: &str) -> String {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    const EXAMPLE_SOLUTION: &str = "2286";
 
     #[test]
     fn example() {

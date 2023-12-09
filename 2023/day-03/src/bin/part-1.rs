@@ -1,5 +1,3 @@
-const EXAMPLE_SOLUTION: &str = "4361";
-
 #[derive(Clone, Copy, Debug)]
 struct Number {
     value: u32,
@@ -93,6 +91,8 @@ fn part1(input: &str) -> String {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    const EXAMPLE_SOLUTION: &str = "4361";
 
     #[test]
     fn example1() {

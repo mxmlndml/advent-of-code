@@ -6,6 +6,7 @@ import (
 	"github.com/mxmlndml/advent-of-code/2024/internal/day01"
 	"github.com/mxmlndml/advent-of-code/2024/internal/day02"
 	"github.com/mxmlndml/advent-of-code/2024/internal/day03"
+	"github.com/mxmlndml/advent-of-code/2024/internal/day04"
 )
 
 func Run(day int, task int, demo bool) {
@@ -35,6 +36,12 @@ func Run(day int, task int, demo bool) {
 			return
 		case 2:
 			day03.Task2(demo)
+			return
+		}
+	case 4:
+		switch task {
+		case 1:
+			day04.Task1(demo)
 			return
 		}
 	default:

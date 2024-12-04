@@ -1,12 +1,14 @@
-package internal
+package inputs
 
 import (
+	"embed"
 	"fmt"
 	"log"
 	"strings"
-
-	"github.com/mxmlndml/advent-of-code/2024/inputs"
 )
+
+//go:embed */*.txt
+var inputs embed.FS
 
 func LoadInput(day int, task int, demo bool) string {
 	suffix := ""
@@ -17,7 +19,7 @@ func LoadInput(day int, task int, demo bool) string {
 	}
 
 	path := fmt.Sprintf("day%02d/%1d_%s.txt", day, task, suffix)
-	b, err := inputs.Inputs.ReadFile(path)
+	b, err := inputs.ReadFile(path)
 	if err != nil {
 		log.Fatal("failed to read file at '" + path + "'")
 	}

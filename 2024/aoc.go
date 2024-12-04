@@ -6,19 +6,19 @@ import (
 	"os"
 	"strconv"
 
-	"github.com/mxmlndml/advent-of-code/2024/internal/days"
+	"github.com/mxmlndml/advent-of-code/2024/internal"
 )
 
 func main() {
-	day, task, demo, err := getInput()
+	day, task, demo, err := getArguments()
 	if err != nil {
 		printUsage()
 		os.Exit(1)
 	}
-	selectDay(day, task, demo)
+	internal.Run(day, task, demo)
 }
 
-func getInput() (day int, task int, demo bool, err error) {
+func getArguments() (day int, task int, demo bool, err error) {
 	if len(os.Args) < 3 {
 		return 0, 0, false, errors.New("wrong usage")
 	}
@@ -49,14 +49,4 @@ func printUsage() {
 	fmt.Println("\n  day\trun implementation for that day (must be between 1 and 25)")
 	fmt.Println("  task\trun implementation for that task (must be either 1 or 2)")
 	fmt.Println("  demo\trun implementation on demo or final input (must either be true or false)")
-}
-
-func selectDay(day int, task int, demo bool) {
-	switch day {
-	case 1:
-		days.Day01(task, demo)
-		break
-	default:
-		fmt.Printf("Day %d has not been implemented yet\n", day)
-	}
 }

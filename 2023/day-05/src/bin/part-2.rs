@@ -1,4 +1,4 @@
-#[derive(Clone)]
+#[derive(Debug, Clone)]
 struct Seed {
     start: u64,
     length: u64,
@@ -91,7 +91,9 @@ fn part2(input: &str) -> String {
         .iter()
         .min()
         .expect("must have locations")
-        .to_string()
+        .to_string();
+
+    todo!()
 }
 
 #[cfg(test)]

@@ -1,5 +1,12 @@
-const getPassword = async (): Promise<number> => {
-  const file = Bun.file("inputs/day01.txt");
+const TEST = false;
+
+type Rotation = {
+  direction: "left" | "right";
+  distance: number;
+};
+
+const parseRotations = async (): Promise<Rotation[]> => {
+  const file = Bun.file(`./${TEST ? "examples" : "inputs"}/day01.txt`);
   const text = await file.text();
   const rotations = text
     .trim()
@@ -27,6 +34,12 @@ const getPassword = async (): Promise<number> => {
       };
     });
 
+  return rotations;
+};
+
+const part1 = async (): Promise<number> => {
+  const rotations = await parseRotations();
+
   let password = 0;
   let dial = 50;
   for (const rotation of rotations) {
@@ -50,4 +63,39 @@ const getPassword = async (): Promise<number> => {
   return password;
 };
 
-console.log(await getPassword());
+const part2 = async (): Promise<number> => {
+  const rotations = await parseRotations();
+  let password = 0;
+  let dial = 50;
+
+  for (const rotation of rotations) {
+    password += Math.floor(rotation.distance / 100);
+    rotation.distance %= 100;
+
+    switch (rotation.direction) {
+      case "left":
+        if (dial <= rotation.distance && dial !== 0) {
+          password++;
+        }
+
+        dial -= rotation.distance;
+        break;
+
+      case "right":
+        if (dial + rotation.distance >= 100) {
+          password++;
+        }
+
+        dial += rotation.distance;
+        break;
+    }
+    dial += 100;
+    dial %= 100;
+  }
+
+  return password;
+};
+
+console.log(`using ${TEST ? "example" : "puzzle"} input`);
+console.log("part 1:", await part1());
+console.log("part 2:", await part2());
